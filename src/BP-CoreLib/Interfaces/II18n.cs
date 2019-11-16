@@ -4,9 +4,7 @@ namespace BPCoreLib.Interfaces
 {
     public interface II18n
     {
-        string File { get; }
-
-        Dictionary<string, Dictionary<string, string>> Languages { get; }
+        IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; }
 
         string Localize(string lang, string node, params string[] format);
 

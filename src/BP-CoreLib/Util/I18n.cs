@@ -6,9 +6,7 @@ namespace BPCoreLib.Util
 {
     public class I18n : II18n
     {
-        public string File { get; set; } = "srv_localization.json";
-
-        public Dictionary<string, Dictionary<string, string>> Languages { get; private set; } = new Dictionary<string, Dictionary<string, string>>();
+        public IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; } = new Reader<Dictionary<string, Dictionary<string, string>>("srv_localization.json");
 
         public string Localize(string lang, string node, params string[] format)
         {
@@ -29,7 +27,7 @@ namespace BPCoreLib.Util
 
         public void ParseLocalization()
         {
-            Languages = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File);
+            Reader.ReadAndParse();
         }
 
         public bool TryGetNodeByString(Dictionary<string, string> values, string node, out string local)
@@ -39,7 +37,7 @@ namespace BPCoreLib.Util
 
         public bool TryGetValuesByLanguage(string lang, out Dictionary<string, string> values)
         {
-            return Languages.TryGetValue(lang, out values);
+            return Reader.Parsed.TryGetValue(lang, out values);
         }
     }
 }
