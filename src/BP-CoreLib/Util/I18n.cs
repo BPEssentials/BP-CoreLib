@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using BPCoreLib.Interfaces;
-using Newtonsoft.Json;
 
 namespace BPCoreLib.Util
 {
     public class I18n : II18n
     {
-        public IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; } = new Reader<Dictionary<string, Dictionary<string, string>>("srv_localization.json");
+        public IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; } = new Reader<Dictionary<string, Dictionary<string, string>>>("srv_localization.json");
 
         public string Localize(string lang, string node, params string[] format)
         {
