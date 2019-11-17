@@ -12,6 +12,6 @@ namespace BPCoreLib.Interfaces
 
         bool TryGetNodeByString(Dictionary<string, string> values, string node, out string local);
 
-        void ParseLocalization();
+        void ParseLocalization(string path);
     }
 }
