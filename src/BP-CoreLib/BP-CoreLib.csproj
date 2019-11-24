@@ -236,6 +236,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Util\Reader.cs" />
+    <Compile Include="Serializable\SerializableQuaternion.cs" />
+    <Compile Include="Serializable\SerializableVector3.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
