@@ -21,12 +21,5 @@ namespace BPCoreLib.Serializable
         {
             return new Vector3(X, Y, Z);
         }
-
-        public void FromVector3(Vector3 vector3)
-        {
-            X = vector3.x;
-            Y = vector3.y;
-            Z = vector3.z;
-        }
     }
 }
