@@ -5,13 +5,13 @@
 > Contains a list of helpful features for Broke Protocol plugins. Required core libary by a few plugins.
 
 ## How To Install
-1. Download `BP-CoreLib.dll` from [the latest release](https://github.com/UserR00T/BP-CoreLib/releases/latest).
-2. Move your just downloaded file to `YourServerFolder/Plugins/`.
-3. That's all, you're done
+1.  Download `BP-CoreLib.dll` from [the latest release](https://github.com/UserR00T/BP-CoreLib/releases/latest).
+2.  Move your just downloaded file to `YourServerFolder/Plugins/`.
+3.  That's all, you're done
 
 ## Contributors
-- [UserR00T](https://github.com/UserR00T)
-- [PLASMAchicken](https://github.com/PLASMAchicken)
+-  [UserR00T](https://github.com/UserR00T)
+-  [PLASMAchicken](https://github.com/PLASMAchicken)
 
 ## License
 
