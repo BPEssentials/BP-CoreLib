@@ -17,10 +17,10 @@ namespace BPCoreLib
         public Core()
         {
             Instance = this;
-            Info = new PluginInfo("BPCoreLib", "CL", new PluginAuthor("UserR00T"))
+            Info = new PluginInfo("BPCoreLib", "CL")
             {
                 Description = "Contains a list of helpful features for Broke Protocol plugins. Required core libary by a few plugins.",
-                Git = "https://github.com/UserR00T/BP-CoreLib"
+                Website = "https://github.com/BPEssentials/BP-CoreLib"
             };
             Logger.LogInfo($"BP CoreLib {(IsDevelopmentBuild() ? "[DEVELOPMENT-BUILD] " : "")}v{Version} loaded in successfully!");
         }
