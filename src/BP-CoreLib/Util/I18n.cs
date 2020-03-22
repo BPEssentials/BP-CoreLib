@@ -7,7 +7,7 @@ namespace BPCoreLib.Util
     {
         public IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; } = new Reader<Dictionary<string, Dictionary<string, string>>>();
 
-        public string Localize(string lang, string node, params string[] format)
+        public string Localize(string lang, string node, params object[] format)
         {
             if (!TryGetValuesByLanguage(lang, out var values))
             {

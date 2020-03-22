@@ -6,7 +6,7 @@ namespace BPCoreLib.Interfaces
     {
         IReader<Dictionary<string, Dictionary<string, string>>> Reader { get; }
 
-        string Localize(string lang, string node, params string[] format);
+        string Localize(string lang, string node, params object[] format);
 
         bool TryGetValuesByLanguage(string lang, out Dictionary<string, string> values);
 
