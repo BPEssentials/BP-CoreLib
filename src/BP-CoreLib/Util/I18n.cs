@@ -25,7 +25,7 @@ namespace BPCoreLib.Util
             return local;
         }
 
-        public string Localize(IFormatProvider formatProvoider ,string lang, string node, params object[] format)
+        public string Localize(IFormatProvider formatProvoider, string lang, string node, params object[] format)
         {
             if (!TryGetValuesByLanguage(lang, out var values))
             {
