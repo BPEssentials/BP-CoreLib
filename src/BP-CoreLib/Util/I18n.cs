@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BPCoreLib.Interfaces;
 
 namespace BPCoreLib.Util
@@ -20,6 +21,23 @@ namespace BPCoreLib.Util
             if (format.Length > 0)
             {
                 return string.Format(local, format);
+            }
+            return local;
+        }
+
+        public string Localize(IFormatProvider formatProvoider, string lang, string node, params object[] format)
+        {
+            if (!TryGetValuesByLanguage(lang, out var values))
+            {
+                return null;
+            }
+            if (!TryGetNodeByString(values, node, out var local))
+            {
+                return null;
+            }
+            if (format.Length > 0)
+            {
+                return string.Format(formatProvoider, local, format);
             }
             return local;
         }
