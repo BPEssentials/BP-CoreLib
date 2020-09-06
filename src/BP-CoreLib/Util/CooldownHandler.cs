@@ -18,7 +18,7 @@ namespace BPCoreLib.Util
         {
             var PlayerCooldowns = GetCooldowns(player);
             PlayerCooldowns = PlayerCooldowns ?? new Dictionary<string, DateTimeOffset>();
-            PlayerCooldowns.Add(key, DateTimeOffset.Now);
+            PlayerCooldowns[key] =  DateTimeOffset.Now;
             player.CustomData.AddOrUpdate(CustomDataKey, PlayerCooldowns);
         }
 
