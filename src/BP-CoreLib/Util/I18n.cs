@@ -42,7 +42,7 @@ namespace BPCoreLib.Util
             return local;
         }
 
-        public void ParseLocalization(string path = "srv_localization.json")
+        public void ParseLocalization(string path)
         {
             Reader.Path = path;
             Reader.ReadAndParse();
