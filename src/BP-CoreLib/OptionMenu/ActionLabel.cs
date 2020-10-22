@@ -22,7 +22,7 @@ namespace BPCoreLib.OptionMenu
         }
     }
 
-    public class OptionMenu
+    internal class OptionMenu
     {
         private readonly string _title;
         public Dictionary<string, ActionLabel> Actions { get; private set; }
