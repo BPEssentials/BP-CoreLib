@@ -227,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="Interfaces\IActionLabel.cs" />
     <Compile Include="Interfaces\II18n.cs" />
     <Compile Include="OptionMenu\ActionLabel.cs" />
     <Compile Include="PlayerFactory\ExtendedPlayerFactory.cs" />

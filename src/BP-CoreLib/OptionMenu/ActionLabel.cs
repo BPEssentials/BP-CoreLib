@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BPCoreLib.Interfaces;
 using BrokeProtocol.API;
 using BrokeProtocol.Collections;
 using BrokeProtocol.Entities;
@@ -10,15 +11,15 @@ using BrokeProtocol.Required;
 
 namespace BPCoreLib.OptionMenu
 {
-    public class ActionLabel
+    public class ActionLabel : IActionLabel
     {
-        public string name;
-        public Action<ShPlayer, string> action;
+        public string Name { get; }
+        public Action<ShPlayer, string> Action { get; }
 
         public ActionLabel(string name, Action<ShPlayer, string> action)
         {
-            this.name = name;
-            this.action = action;
+            this.Name = name;
+            this.Action = action;
         }
     }
 
@@ -50,7 +51,7 @@ namespace BPCoreLib.OptionMenu
             int i = 0;
             foreach (var action in this.Actions)
             {
-                actions[i++] = new LabelID(action.Value.name, action.Key);
+                actions[i++] = new LabelID(action.Value.Name, action.Key);
             }
             player.svPlayer.SendOptionMenu(_title, player.ID, menuId, _options, actions);
         }
@@ -64,7 +65,7 @@ namespace BPCoreLib.OptionMenu
         }
     }
 
-    public class OnStarted : IScript
+    public class OnAction : IScript
     {
         [Target(GameSourceEvent.PlayerOptionAction, ExecutionMode.Event)]
         public void OnOptionAction(ShPlayer player, int targetID, string menuID, string optionID, string actionID)
@@ -76,7 +77,7 @@ namespace BPCoreLib.OptionMenu
 
             var menu = OptionMenu.Menus[menuID];
 
-            menu.Actions[actionID].action.Invoke(player, optionID);
+            menu.Actions[actionID].Action.Invoke(player, optionID);
         }
     }
 }
