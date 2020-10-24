@@ -18,8 +18,8 @@ namespace BPCoreLib.OptionMenu
 
         public ActionLabel(string name, Action<ShPlayer, string> action)
         {
-            this.Name = name;
-            this.Action = action;
+            Name = name;
+            Action = action;
         }
     }
 
@@ -28,7 +28,7 @@ namespace BPCoreLib.OptionMenu
         private readonly string _title;
         public Dictionary<string, ActionLabel> Actions { get; private set; }
         private readonly LabelID[] _options;
-        private readonly string menuId;
+        private readonly string _menuId;
 
         public OptionMenu(string title, LabelID[] labels, ActionLabel[] actions)
         {
