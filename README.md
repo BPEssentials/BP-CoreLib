@@ -5,9 +5,12 @@
 > Contains a list of helpful features for Broke Protocol plugins. Required core libary by a few plugins.
 
 ## How To Install
-1.  Download `BP-CoreLib.dll` from [the latest release](https://github.com/UserR00T/BP-CoreLib/releases/latest).
+1.  Download `BP-CoreLib.dll` from [the latest release](https://github.com/BPEssentials/BP-CoreLib/releases/latest).
 2.  Move your just downloaded file to `YourServerFolder/Plugins/`.
 3.  That's all, you're done
+
+## How to Compile
+1. Change envirorment Variable `BPDIR` to the path of your Broke Protocol Directory: e.g. `BPDIR=E:\Steam\steamapps\common\BROKE PROTOCOL`
 
 ## Contributors
 -  [UserR00T](https://github.com/UserR00T)
