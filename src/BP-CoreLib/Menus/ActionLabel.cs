@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BPCoreLib.Interfaces;
+using BPCoreLib.Menus;
 using BrokeProtocol.API;
 using BrokeProtocol.Collections;
 using BrokeProtocol.Entities;
 using BrokeProtocol.Required;
 
-namespace BPCoreLib.OptionMenu
+namespace BPCoreLib.Menus
 {
     public class ActionLabel : IActionLabel
     {
@@ -25,20 +26,18 @@ namespace BPCoreLib.OptionMenu
 
     internal class OptionMenu
     {
-        public static Dictionary<string, OptionMenu> Menus = new Dictionary<string, OptionMenu>();
-
         private readonly string _title;
-        public Dictionary<string, ActionLabel> Actions { get; private set; }
+        public Dictionary<string, IActionLabel> Actions { get; private set; }
         private readonly LabelID[] _options;
         private readonly string _menuId;
 
-        public OptionMenu(string title, IEnumerable<LabelID> labels, IEnumerable<ActionLabel> actions)
+        public OptionMenu(string title, IEnumerable<LabelID> labels, IEnumerable<IActionLabel> actions)
         {
             _title = title;
             _options = labels.ToArray();
             _menuId = Guid.NewGuid().ToString();
-            Menus.Add(_menuId, this);
-            Actions = new Dictionary<string, ActionLabel>();
+            PlayerExtension.OptionMenus.Add(_menuId, this);
+            Actions = new Dictionary<string, IActionLabel>();
             foreach (var action in actions)
             {
                 Actions.Add(Guid.NewGuid().ToString(), action);
@@ -54,30 +53,6 @@ namespace BPCoreLib.OptionMenu
                 actions[i++] = new LabelID(action.Value.Name, action.Key);
             }
             player.svPlayer.SendOptionMenu(_title, player.ID, _menuId, _options, actions);
-        }
-    }
-
-    public static class Extension
-    {
-        public static void SendOptionMenu(this ShPlayer player, string title, IEnumerable<LabelID> labels, IEnumerable<ActionLabel> actions)
-        {
-            (new OptionMenu(title, labels, actions)).SendToPlayer(player);
-        }
-    }
-
-    public class OnAction : IScript
-    {
-        [Target(GameSourceEvent.PlayerOptionAction, ExecutionMode.Event)]
-        public void OnOptionAction(ShPlayer player, int targetID, string menuID, string optionID, string actionID)
-        {
-            if (!OptionMenu.Menus.ContainsKey(menuID))
-            {
-                return;
-            }
-
-            var menu = OptionMenu.Menus[menuID];
-
-            menu.Actions[actionID].Action.Invoke(player, optionID);
         }
     }
 }
