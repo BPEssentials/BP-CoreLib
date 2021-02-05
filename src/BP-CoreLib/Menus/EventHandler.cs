@@ -32,7 +32,7 @@ namespace BPCoreLib.Menus
                 return;
             }
 
-            PlayerExtension.InputMenus[menuID].Invoke(input);
+            PlayerExtension.InputMenus[menuID].Invoke(player, input);
         }
     }
 }
