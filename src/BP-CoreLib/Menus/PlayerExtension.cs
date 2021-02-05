@@ -14,7 +14,7 @@ namespace BPCoreLib.Menus
 {
     public static class PlayerExtension
     {
-        internal static Dictionary<string, Action<string>> InputMenus { get; } = new Dictionary<string, Action<string>>();
+        internal static Dictionary<string, Action<ShPlayer, string>> InputMenus { get; } = new Dictionary<string, Action<ShPlayer, string>>();
 
         internal static Dictionary<string, OptionMenu> OptionMenus { get; } = new Dictionary<string, OptionMenu>();
 
@@ -23,7 +23,7 @@ namespace BPCoreLib.Menus
             (new OptionMenu(title, labels, actions)).SendToPlayer(player);
         }
 
-        public static void SendInputMenu(this ShPlayer player, string title, Action<string> action, InputField.ContentType type = InputField.ContentType.Standard)
+        public static void SendInputMenu(this ShPlayer player, string title, Action<ShPlayer, string> action, InputField.ContentType type = InputField.ContentType.Standard)
         {
             var menuId = Guid.NewGuid().ToString();
             player.svPlayer.SendInputMenu(title, player.ID, menuId, type);

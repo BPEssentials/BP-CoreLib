@@ -24,7 +24,7 @@ namespace BPCoreLib.Menus
             menu.Actions[actionID].Action.Invoke(player, optionID);
         }
 
-        [Target(GameSourceEvent.PlayerSubmitInput, ExecutionMode.Override)]
+        [Target(GameSourceEvent.PlayerSubmitInput, ExecutionMode.Event)]
         public void OnSubmitInput(ShPlayer player, int targetID, string menuID, string input)
         {
             if (!PlayerExtension.InputMenus.ContainsKey(menuID))
@@ -32,7 +32,7 @@ namespace BPCoreLib.Menus
                 return;
             }
 
-            PlayerExtension.InputMenus[menuID].Invoke(input);
+            PlayerExtension.InputMenus[menuID].Invoke(player, input);
         }
     }
 }

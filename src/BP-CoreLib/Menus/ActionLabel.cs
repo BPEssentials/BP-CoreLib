@@ -50,7 +50,7 @@ namespace BPCoreLib.Menus
             for (var i = 0; i < actions.Length; i++)
             {
                 var action = Actions.ElementAt(i);
-                actions[i++] = new LabelID(action.Value.Name, action.Key);
+                actions[i] = new LabelID(action.Value.Name, action.Key);
             }
             player.svPlayer.SendOptionMenu(_title, player.ID, _menuId, _options, actions);
         }
