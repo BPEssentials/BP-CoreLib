@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BPCoreLib.Interfaces;
-using BPCoreLib.Serializable;
+﻿using BPCoreLib.Interfaces;
 using BrokeProtocol.Entities;
 using BrokeProtocol.Required;
-using JetBrains.Annotations;
+using System;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace BPCoreLib.Menus

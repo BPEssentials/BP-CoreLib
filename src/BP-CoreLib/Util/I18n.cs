@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BPCoreLib.Interfaces;
+using System;
 using System.Collections.Generic;
-using BPCoreLib.Interfaces;
 
 namespace BPCoreLib.Util
 {

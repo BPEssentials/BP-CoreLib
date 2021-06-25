@@ -18,7 +18,7 @@ namespace BPCoreLib.Util
         {
             var PlayerCooldowns = GetCooldowns(player);
             PlayerCooldowns = PlayerCooldowns ?? new Dictionary<string, DateTimeOffset>();
-            PlayerCooldowns[key] =  DateTimeOffset.Now;
+            PlayerCooldowns[key] = DateTimeOffset.Now;
             player.CustomData.AddOrUpdate(CustomDataKey, PlayerCooldowns);
         }
 
@@ -35,8 +35,8 @@ namespace BPCoreLib.Util
         public double GetCooldown(SvPlayer player, string key, int delay)
         {
             var PlayerCooldowns = GetCooldowns(player);
-            if (PlayerCooldowns?.ContainsKey(key) != true ) 
-            { 
+            if (PlayerCooldowns?.ContainsKey(key) != true)
+            {
                 return 0;
             }
             return Math.Max(0, (PlayerCooldowns[key].AddSeconds(delay) - DateTimeOffset.Now).TotalSeconds);
