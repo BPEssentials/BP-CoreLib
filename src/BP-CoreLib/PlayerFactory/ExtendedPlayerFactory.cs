@@ -1,31 +1,49 @@
-﻿using BPCoreLib.Abstractions;
-using BrokeProtocol.Entities;
+﻿using BrokeProtocol.Entities;
 using System.Collections.Generic;
 
 namespace BPCoreLib.PlayerFactory
 {
-    public abstract class ExtendedPlayerFactory<T> where T : ExtendedPlayer
+    public class GenericPlayerFactory<T> : ExtendedPlayerFactory<T> where T : ExtendedPlayer, new()
     {
-        public Dictionary<int, T> Players { get; set; } = new Dictionary<int, T>();
-
+        public override void AddOrReplace(ShPlayer player)
+        {
+            this[player.ID] = new T
+            {
+                Client = player,
+            };
+        }
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ExtendedPlayerFactory<T> : Dictionary<int, T>, IExtendedPlayerFactory where T : ExtendedPlayer
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player"></param>
         public abstract void AddOrReplace(ShPlayer player);
 
-        public virtual bool Remove(int id) => Players.Remove(id);
-
-        public virtual T GetUnsafe(int id) => Players[id];
-
-        public virtual T GetSafe(int id)
+        public T1 GetSafe<T1>(int key) where T1 : ExtendedPlayer
         {
-            if (!Players.TryGetValue(id, out var item))
-            {
-                return null;
-            }
-            return item;
+            return GetSafe(key) as T1;
         }
-
-        public virtual bool TryGetSafe(int id, out T item)
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public virtual T GetSafe(int key)
         {
-            return Players.TryGetValue(id, out item);
+            if (!TryGetValue(key, out T item))
+            {
+                return default;
+            }
+
+            return item;
         }
     }
 }

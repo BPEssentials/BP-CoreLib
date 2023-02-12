@@ -12,8 +12,8 @@ namespace BPCoreLib.Interfaces
 
         double GetCooldown(SvPlayer player, string key, int delay);
 
-        Dictionary<string, DateTimeOffset> GetCooldowns(SvPlayer player);
+        Dictionary<string, DateTimeOffset> FetchForUser(SvPlayer player);
 
-        bool IsCooldown(SvPlayer player, string key, int delay);
+        bool HasCooldown(SvPlayer player, string key, int delay);
     }
 }
